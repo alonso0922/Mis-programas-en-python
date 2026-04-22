@@ -1,0 +1,137 @@
+Equipo:
+Edgar Alonso Olivares Prieto 
+Emmanuel Alejandro Lopez Rendon
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+class OperacionesBasicas {
+private:
+    double a, b;
+
+public:
+    OperacionesBasicas(double x, double y) {
+        a = x;
+        b = y;
+    }
+
+    double suma() {
+        return a + b;
+    }
+
+    double resta() {
+        return a - b;
+    }
+
+    double multiplicacion() {
+        return a * b;
+    }
+
+    double division() {
+        if (b == 0) {
+            cout << "Error: No se puede dividir entre 0\n";
+            return 0;
+        }
+        return a / b;
+    }
+};
+
+class OperacionesAvanzadas {
+public:
+    double potencia(double base, double exp) {
+        return pow(base, exp);
+    }
+
+    double porcentaje(double porcentaje, double cantidad) {
+        return (porcentaje / 100) * cantidad;
+    }
+
+    void derivada(int n) {
+        if (n == 0) {
+            cout << "f'(x) = 0\n";
+        } else if (n == 1) {
+            cout << "f'(x) = 1\n";
+        } else {
+            cout << "f'(x) = " << n << "x^" << (n - 1) << endl;
+        }
+    }
+};
+
+int main() {
+    char opcion;
+
+    do {
+        cout << "\n/////////////////////// CALCULADORA AVANZADA //////////////// \n";
+        cout << "1-Suma\n";
+        cout << "2-Resta\n";
+        cout << "3-Multiplicacion\n";
+        cout << "4.-Division\n";
+        cout << "5-Potencia\n";
+        cout << "///////// OPERACIONES AVANZADAS /////////////// \n";
+        cout << "6-Porcentaje\n";
+        cout << "7-Derivada\n";
+        cout << "Z-Salir\n";
+        cout << "Selecciona la opcion: ";
+        cin >> opcion;
+
+        double a, b;
+        OperacionesAvanzadas opAv;
+
+        switch(opcion) {
+            case '1':
+                cout << "Ingresa dos numeros: ";
+                cin >> a >> b;
+                cout << "Resultado: " << OperacionesBasicas(a,b).suma() << endl;
+                break;
+
+            case '2':
+                cout << "Ingresa dos numeros: ";
+                cin >> a >> b;
+                cout << "Resultado: " << OperacionesBasicas(a,b).resta() << endl;
+                break;
+
+            case '3':
+                cout << "Ingresa dos numeros: ";
+                cin >> a >> b;
+                cout << "Resultado: " << OperacionesBasicas(a,b).multiplicacion() << endl;
+                break;
+
+            case '4':
+                cout << "Ingresa dos numeros: ";
+                cin >> a >> b;
+                cout << "Resultado: " << OperacionesBasicas(a,b).division() << endl;
+                break;
+
+            case '5':
+                cout << "Ingresa base y exponente: ";
+                cin >> a >> b;
+                cout << "Resultado: " << opAv.potencia(a, b) << endl;
+                break;
+
+            case '6':
+                cout << "Ingresa porcentaje y cantidad: ";
+                cin >> a >> b;
+                cout << "Resultado: " << opAv.porcentaje(a, b) << endl;
+                break;
+
+            case '7':
+                int n;
+                cout << "Ingresa el exponente n de f(x)=x^n: ";
+                cin >> n;
+                opAv.derivada(n);
+                break;
+
+            case 'Z':
+            case 'z':
+                cout << "Saliendo del programa...\n";
+                break;
+
+            default:
+                cout << "Opcion invalida\n";
+        }
+
+    } while(opcion != 'Z' && opcion != 'z');
+
+    return 0;
+} 
